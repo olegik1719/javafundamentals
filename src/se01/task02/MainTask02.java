@@ -3,7 +3,7 @@ package se01.task02;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class MainProgram {
+public class MainTask02 {
     public static void main(String... args){
         int minNumber = 1;
         double epsilon = getEpsilon(args);//0.01;
