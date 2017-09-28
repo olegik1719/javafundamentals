@@ -7,10 +7,10 @@ public class MainProgram {
     public static void main(String... args){
         int minNumber = 1;
         double epsilon = getEpsilon(args);//0.01;
-        ArrayList<Double> sequence = new ArrayList<Double>();
+        ArrayList<Double> sequence = new ArrayList<>();
         //
         double result;
-        for (sequence.add(result=series(minNumber));result >= epsilon;++minNumber,sequence.add(result=series(minNumber))){}
+        for (sequence.add(result=series(minNumber));result>=epsilon;++minNumber,sequence.add(result=series(minNumber))){}
         System.out.println(minNumber);
         for(double d:sequence){
             System.out.println(d);
@@ -27,7 +27,7 @@ public class MainProgram {
 
     private static double getEpsilon(String[] args){
         double eps = 0.01;
-        // if user get us parameters, then first try use as epsilon
+        // if user gave us parameters, then first try use as epsilon
         if (args.length > 0){
             eps = Double.parseDouble(args[0]);
         }else{
