@@ -44,8 +44,10 @@ public class MainTask02 {
     /**
      * Функция работает с пользователем и запрашивает у него epsilon
      * -- с какой точностью искать тот самый "минимакс"
+     * Если пользователь предоставляет неверные данные, возвращается 0.01
      * @param args -- строка аргументов на входе;
      * @return epsilon -- необходимая точность.
+     *
      */
 
     private static double getEpsilon(String[] args){
@@ -68,6 +70,12 @@ public class MainTask02 {
                 eps = sc.nextDouble();
             }
         }
+        if (eps < 0){
+            return -eps;
+        } else if (eps == 0){
+            return  0.01;
+        }
+
         return eps;
     }
 }
