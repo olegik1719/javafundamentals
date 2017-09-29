@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *
+ * Решение задачи 02 из списка домашних заданий для группы JavaFundamentals 06
+ * @author olegik1719
  */
 
 
@@ -27,6 +28,11 @@ public class MainTask02 {
         }
     }
 
+    /**
+     * Функция возвращает n-ый член последовательности
+     * @param n -- номер очередного, нужного нам члена последовательности
+     * @return число, нужный член последовательности
+     */
     private static double series(int n){
         double result = Double.MAX_VALUE;
         if (n!=-1){
@@ -35,11 +41,26 @@ public class MainTask02 {
         return result;
     }
 
+    /**
+     * Функция работает с пользователем и запрашивает у него epsilon
+     * -- с какой точностью искать тот самый "минимакс"
+     * @param args -- строка аргументов на входе;
+     * @return epsilon -- необходимая точность.
+     */
+
     private static double getEpsilon(String[] args){
         double eps = 0.01;
         // if user gave us parameters, then first try use as epsilon
         if (args.length > 0){
-            eps = Double.parseDouble(args[0]);
+            try {
+                eps = Double.parseDouble(args[0]);
+            }catch(Exception e){
+                System.out.println("Enter epsilon:");
+                Scanner sc = new Scanner(System.in);
+                if (sc.hasNextDouble()){
+                    eps = sc.nextDouble();
+                }
+            }
         }else{
             System.out.println("Enter epsilon:");
             Scanner sc = new Scanner(System.in);
