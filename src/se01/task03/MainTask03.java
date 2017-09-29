@@ -7,7 +7,7 @@ public class MainTask03 {
         double b = 1;
         double h = 0.1;
         for (double x = a; x<= b; x+=h){
-            System.out.printf("%f | %f \n", x, getFunction(x));
+            System.out.printf("%.2f | %f \n", x, getFunction(x));
         }
 
     }
