@@ -3,14 +3,24 @@ package se01.task02;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ *
+ */
+
+
 public class MainTask02 {
     public static void main(String... args){
-        int minNumber = 1;
+        int minNumber = 0;
         double epsilon = getEpsilon(args);//0.01;
         ArrayList<Double> sequence = new ArrayList<>();
         //
         double result;
-        for (sequence.add(result=series(minNumber));result>=epsilon;++minNumber,sequence.add(result=series(minNumber))){}
+        //for (sequence.add(result=series(minNumber));result>=epsilon;++minNumber,sequence.add(result=series(minNumber))){}
+        do {
+            minNumber++;
+            result = series(minNumber);
+            sequence.add(result);
+        } while (result >= epsilon);
         System.out.println(minNumber);
         for(double d:sequence){
             System.out.println(d);
