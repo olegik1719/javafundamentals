@@ -16,13 +16,17 @@ public class MainTask02 {
         ArrayList<Double> sequence = new ArrayList<>();
         //
         double result;
-        //for (sequence.add(result=series(minNumber));result>=epsilon;++minNumber,sequence.add(result=series(minNumber))){}
+        //for (sequence.add(result=series(minNumber));
+        //      result>=epsilon;
+        //      ++minNumber,sequence.add(result=series(minNumber)))
+        //          {}
         do {
             minNumber++;
             result = series(minNumber);
             sequence.add(result);
         } while (result >= epsilon);
         System.out.println(minNumber);
+
         for(double d:sequence){
             System.out.println(d);
         }
@@ -38,6 +42,7 @@ public class MainTask02 {
         if (n!=-1){
             result = (double) 1/((n+1)*(n+1));
         }
+        //System.out.printf("%d = %5f \n",n,result);
         return result;
     }
 
