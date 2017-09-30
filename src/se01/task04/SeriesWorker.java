@@ -1,16 +1,16 @@
 package se01.task04;
 
-public class SeriesGetter {
+public class SeriesWorker {
     private double[] series;
 
-    public SeriesGetter(int n){
+    public SeriesWorker(int n){
         series = new double[n];
         for (int i = 0; i < n ; i++) {
             series[i] = Math.random()*1000;
         }
     }
 
-    public SeriesGetter(){
+    public SeriesWorker(){
         this(10);
     }
 
@@ -22,8 +22,8 @@ public class SeriesGetter {
     }
 
     public static double[] staticGetSeries(int length){
-        SeriesGetter seriesGetter = new SeriesGetter(length);
-        return seriesGetter.getSeries();
+        SeriesWorker seriesWorker = new SeriesWorker(length);
+        return seriesWorker.getSeries();
     }
 
     public static void seriesOut(double[] series) {

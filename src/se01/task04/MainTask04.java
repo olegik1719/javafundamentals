@@ -5,7 +5,7 @@ public class MainTask04 {
         // Делим код на части:
         // 1. Получение исходных данных.
         // Чтобы не запариваться здесь -- вынес в отдельный класс.
-        double[] series = SeriesGetter.staticGetSeries(9);
+        double[] series = SeriesWorker.staticGetSeries(9);
         //SeriesGetter.seriesOut(series);
         // 2. Работаем с данными. Обрабатываем их
         double max = (series[0]+series[series.length-1])/2;
