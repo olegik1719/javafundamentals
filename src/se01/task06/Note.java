@@ -22,34 +22,56 @@ public class Note {
     }
 
     /**
-     *
+     * Создание записи с заданным текстом
+     * @param body -- Текст новой записи
      */
     public Note(String body){
         this();
         noteBody = body;
     }
 
+    /**
+     * Создание записи через копирование существующей
+     * @param original
+     */
     public Note(Note original){
         this(original.noteBody);
     }
 
+    /**
+     * Возвращает текст записи.
+     * @return body
+     */
     public String getNoteBody() {
         return noteBody;
     }
 
+    /**
+     * Меняет текст записи.
+     * Возвращает сам объект. Возможно серийное использование.
+     * @param newBody
+     * @return
+     */
     public Note setNotebody(String newBody){
         noteBody = newBody;
         return this;
     }
 
+    /**
+     * Создает копию записи.
+     */
     @Override
     public Note clone(){
         return new Note(this);
     }
 
+    /**
+     * Очищает запись. Возвращает сам объект.
+     * @return
+     */
     public Note cleanNote(){
-        setNotebody("");
-        return this;
+        return setNotebody("");
+        //return this;
     }
 
     @Override
