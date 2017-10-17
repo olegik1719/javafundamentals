@@ -15,7 +15,7 @@ public class NotePad {
      * показывает текущее количество реальных записей(вместе с удаленными).
      * <p>При удалении записей сдвига не происходит.</p>
      */
-    private int sizeOfList;
+    private int capacity;
 
     public NotePad(){
         this(10);
@@ -38,16 +38,17 @@ public class NotePad {
     }
 
     public NotePad addNote(Note note) {
-        if (sizeOfList >= notes.length)
-            setSize(2* sizeOfList);
-        notes[sizeOfList++] = note.clone();
+        if (capacity >= notes.length)
+            setSize(2* capacity);
+        notes[capacity++] = note.clone();
         //sizeOfList++;
         return this;
     }
 
     private NotePad setSize(int newSize){
         Note[] newNotes = new Note[newSize];
-        for (int i = 0, j = 0; i < sizeOfList && j < newSize; i++, j++) {
+        // заменить на arrayCopy!!!
+        for (int i = 0, j = 0; i < capacity && j < newSize; i++, j++) {
             newNotes[j] = newNotes[i];
         }
         return this;
@@ -77,24 +78,24 @@ public class NotePad {
     }*/
 
     public NotePad removeNote(int remIndex){
-        if (remIndex < sizeOfList){
+        if (remIndex < capacity){
             System.arraycopy(notes, remIndex,
                     notes, remIndex+1,
-                    sizeOfList - remIndex -1);
-            sizeOfList--;
+                    capacity - remIndex -1);
+            capacity--;
         }
         return this;
     }
 
     public NotePad outToPrint(int noteToPrint){
-        if (noteToPrint < sizeOfList)
+        if (noteToPrint < capacity)
             System.out.printf("Запись номер %d:\n %s \n",
                 noteToPrint, notes[noteToPrint]);
         return this;
     }
 
     public NotePad outToPrint(){
-        for (int i = 0; i < sizeOfList; i++)
+        for (int i = 0; i < capacity; i++)
             outToPrint(i);
         return this;
     }
@@ -104,7 +105,7 @@ public class NotePad {
     }
 
     public int getSizeOfList(){
-        return sizeOfList;
+        return capacity;
     }
 
     public NotePad editNoteAt(int index, String newBody){
