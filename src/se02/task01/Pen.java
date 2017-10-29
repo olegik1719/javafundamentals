@@ -1,27 +1,21 @@
 package se02.task01;
 
 public class Pen {
+    private static int count = 0;
+    private int number;
     private EColor color;
     private EWidth width;
     public Pen(){
+        number = count++;
         color = EColor.BLACK;
         width = EWidth.THINK;
     }
 
     /**
-     * Effective numeration,
-     * (n,m) -> (2^((m+1)+n)+2^n).
-     * int n>=0; m>=0
      * @return hashCode
      */
     public int hashCode(){
-        int hashcode=1;
-        int numColor = color.ordinal();
-        int numWidth = width.ordinal();
-        hashcode <<= numWidth+1;
-        hashcode++;
-        hashcode <<= numColor;
-        return hashcode;
+        return number;
     }
 
     public EWidth getWidth(){
@@ -43,7 +37,7 @@ public class Pen {
     }
 
     public boolean equals(Pen pen){
-        return (width == pen.width)&&(color == pen.color);
+        return (this.hashCode() == pen.hashCode());
     }
 
     public String toString(){
@@ -51,13 +45,6 @@ public class Pen {
     }
 
     public static void main(String[] args) {
-        Pen pen = new Pen();
-        System.out.println(pen.color+" "+ pen.color.ordinal());
-        System.out.println(1<<5);
-        //Integer a = 8;
-        System.out.println(Integer.toBinaryString(pen.hashCode()));
-        Pen pen1 = new Pen();
-        System.out.println(pen.equals(pen1));
-        System.out.println(pen.toString());
+
     }
 }
