@@ -1,7 +1,11 @@
 package se02.task02;
 
 public class WorkSet {
-    Writeable[] workSet;
-    Employee employee;
+    private Writeable[] workSet;
+    public int getCost(){
+        int cost = 0;
+        for (Writeable thing:workSet){cost+=thing.getCost()}
+        return cost;
+    }
 
 }

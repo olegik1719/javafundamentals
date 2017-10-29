@@ -2,8 +2,9 @@ package se02.task02;
 
 public class PrintStaffWorkSetCost{
     public static void main(String[] args) {
-        Employee employee = Employee.getEmployeeByName("Vasya");
-        WorkSet workSet = WorkSet.getWorkSet(employee);
-        System.out.println(workSet.cost);
+        Staff staff = new Staff();
+        Employee employee = staff.getEmployeeByName("Vasya");
+        WorkSet workSet = employee.getWorkSet();
+        System.out.println(workSet.getCost());
     }
 }
