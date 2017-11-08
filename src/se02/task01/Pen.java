@@ -1,20 +1,24 @@
 package se02.task01;
 
 public class Pen {
-    private static int count = 0;
-    private int number;
+//    private static int count = 0;
+//    private int number;
     private EColor color;
     private EWidth width;
     public Pen(){
-        number = count++;
-        color = EColor.BLACK;
-        width = EWidth.THINK;
+        //number = count++;
+        this(EColor.BLACK, EWidth.THINK);
     }
 
+    public Pen(EColor color, EWidth width){
+        this.color = color;
+        this.width = width;
+    }
     /**
      * @return hashCode
      */
     public int hashCode(){
+        int number = 31 * color.ordinal() + width.ordinal();
         return number;
     }
 
@@ -22,22 +26,22 @@ public class Pen {
         return width;
     }
 
-    public Pen setWidth(EWidth width){
-        this.width = width;
-        return this;
-    }
+//    public Pen setWidth(EWidth width){
+//        this.width = width;
+//        return this;
+//    }
 
     public EColor getColor(){
         return color;
     }
 
-    public Pen setColor(EColor color){
-        this.color = color;
-        return this;
-    }
+//    public Pen setColor(EColor color){
+//        this.color = color;
+//        return this;
+//    }
 
     public boolean equals(Pen pen){
-        return (this.hashCode() == pen.hashCode());
+        return (this.color == pen.color)&(this.width == pen.width);
     }
 
     public String toString(){
