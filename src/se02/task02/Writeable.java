@@ -1,5 +1,7 @@
 package se02.task02;
 
 public interface Writeable {
-    int getCost();
+    default int getCost(){
+        return 1;
+    }
 }

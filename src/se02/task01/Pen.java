@@ -1,12 +1,13 @@
 package se02.task01;
 
+import lombok.Getter;
+
 public class Pen {
-//    private static int count = 0;
-//    private int number;
+    @Getter
     private EColor color;
+    @Getter
     private EWidth width;
     public Pen(){
-        //number = count++;
         this(EColor.BLACK, EWidth.THINK);
     }
 
@@ -15,33 +16,28 @@ public class Pen {
         this.width = width;
     }
     /**
+     * Simple function for hashcode:
+     * We use some prime numbers
+     * If we need more, we may use big prime in division.
      * @return hashCode
      */
     public int hashCode(){
-        int number = 31 * color.ordinal() + width.ordinal();
+        int number = 31 * color.ordinal() + 67 * width.ordinal();
         return number;
     }
 
-    public EWidth getWidth(){
-        return width;
-    }
-
-//    public Pen setWidth(EWidth width){
-//        this.width = width;
-//        return this;
-//    }
-
-    public EColor getColor(){
-        return color;
-    }
-
-//    public Pen setColor(EColor color){
-//        this.color = color;
-//        return this;
-//    }
-
-    public boolean equals(Pen pen){
-        return (this.color == pen.color)&(this.width == pen.width);
+    /**
+     * Changed param's type to Object for override;
+     * @param pen
+     * @return equals
+     */
+    public boolean equals(Object  pen){
+        if (this.getClass()!=pen.getClass()) {
+            return false;
+        } else {
+            return (this.color == ((Pen) pen).color)
+                    & (this.width == ((Pen) pen).width);
+        }
     }
 
     public String toString(){
