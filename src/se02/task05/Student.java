@@ -12,7 +12,7 @@ public class Student {
     public Student(String name){
         this.setName(name);
     }
-    /*
+    /* test
     public boolean isInList(Subject subject){
         return (subject.isHere(this));
     }
