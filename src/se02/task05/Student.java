@@ -14,11 +14,7 @@ public class Student {
     }
     /*
     public boolean isInList(Subject subject){
-        return (студент в списке)
-    }
-    
-    public boolean isInList(Subject subject){
-        return (студент в списке)
+        return (subject.isHere(this));
     }
     
     public Number gradeSubject(Subject subject){
