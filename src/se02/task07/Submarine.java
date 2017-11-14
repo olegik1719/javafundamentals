@@ -27,7 +27,7 @@ public class Submarine{
         centerTurbine = new Turbine();
     }
 
-    public Submarine letsgo() {
+    public Submarine letsGo() {
         System.out.printf("So we sailed up to the sun\nTill we found the sea of green\nAnd we lived beneath the waves\nIn our %s\n", name);
         leftTurbine.start();
         rightTurbine.start();
@@ -37,6 +37,6 @@ public class Submarine{
 
     public static void main(String[] args) {
         Submarine yellowSubmarine = new Submarine("Yellow Submarine");
-        yellowSubmarine.letsgo();
+        yellowSubmarine.letsGo();
     }
 }
