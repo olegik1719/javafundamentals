@@ -1,4 +1,4 @@
-package se02.task06;
+package se02.task07;
 
 public class Submarine{
    private String name;
