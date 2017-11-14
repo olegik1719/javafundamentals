@@ -23,7 +23,7 @@ public class Submarine{
    }
 
    public Submarine letsgo(){
-       System.out.printf("So we sailed up to the sun\nTill we found the sea of green\nAnd we lived beneath the waves\nIn our %s\n", name);
+       System.out.printf("So we sailed up to the sun\nTill we found the sea of green\nAnd we lived beneath the waves\nIn our %s\n",name);
        leftTourbine.start();
        rightTourbine.start();
        centerTourbine.start();
