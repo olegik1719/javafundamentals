@@ -13,13 +13,13 @@ public class Submarine{
     private Turbine centerTurbine;
 
     class Turbine {
-        public Turbine start() {
+        Turbine start() {
             System.out.printf("We all live in %s, %s, %s \n", name, name, name);
             return this;
         }
     }
 
-    public Submarine(String name) {
+    private Submarine(String name) {
         this.name = name;
         System.out.printf("In the town where I was born\nLived a man, who sailed to sea\nAnd he told us of his life\nIn the land of submarines\n");
         leftTurbine = new Turbine();
@@ -27,7 +27,7 @@ public class Submarine{
         centerTurbine = new Turbine();
     }
 
-    public Submarine letsGo() {
+    private Submarine letsGo() {
         System.out.printf("So we sailed up to the sun\nTill we found the sea of green\nAnd we lived beneath the waves\nIn our %s\n", name);
         leftTurbine.start();
         rightTurbine.start();
