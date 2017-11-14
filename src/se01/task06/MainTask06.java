@@ -2,6 +2,7 @@ package se01.task06;
 
 /**
  * Программа проверки классов <p>блокнот</p> и <p>запись блокнота</p>
+ *
  * @author olegik1719
  */
 public class MainTask06 {

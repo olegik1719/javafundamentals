@@ -1,7 +1,7 @@
 package se02.task03;
 
 /**
- *  Simple class - parent for other classes
+ * Simple class - parent for other classes
  */
 
 abstract public class BaseThing {

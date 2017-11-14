@@ -8,15 +8,15 @@ public class Employee {
         return name;
     }
 
-    public WorkSet getWorkSet(){
+    public WorkSet getWorkSet() {
         return workSet;
     }
 
-    public Employee(){
+    public Employee() {
         name = "";
     }
 
-    public Employee(String name){
+    public Employee(String name) {
         this.name = name;
     }
 }

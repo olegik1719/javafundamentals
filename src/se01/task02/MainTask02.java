@@ -5,12 +5,13 @@ import java.util.Scanner;
 
 /**
  * Решение задачи 02 из списка домашних заданий для группы JavaFundamentals 06
+ *
  * @author olegik1719
  */
 
 
 public class MainTask02 {
-    public static void main(String... args){
+    public static void main(String... args) {
         int minNumber = 0;
         double epsilon = getEpsilon(args);//0.01;
         ArrayList<Double> sequence = new ArrayList<>();
@@ -27,20 +28,21 @@ public class MainTask02 {
         } while (result >= epsilon);
         System.out.println(minNumber);
 
-        for(double d:sequence){
+        for (double d : sequence) {
             System.out.println(d);
         }
     }
 
     /**
      * Функция возвращает n-ый член последовательности
+     *
      * @param n -- номер очередного, нужного нам члена последовательности
      * @return число, нужный член последовательности
      */
-    private static double series(int n){
+    private static double series(int n) {
         double result = Double.MAX_VALUE;
-        if (n!=-1){
-            result = (double) 1/((n+1)*(n+1));
+        if (n != -1) {
+            result = (double) 1 / ((n + 1) * (n + 1));
         }
         //System.out.printf("%d = %5f \n",n,result);
         return result;
@@ -50,35 +52,35 @@ public class MainTask02 {
      * Функция работает с пользователем и запрашивает у него epsilon
      * -- с какой точностью искать тот самый "минимакс"
      * Если пользователь предоставляет неверные данные, возвращается 0.01
+     *
      * @param args -- строка аргументов на входе;
      * @return epsilon -- необходимая точность.
-     *
      */
 
-    private static double getEpsilon(String[] args){
+    private static double getEpsilon(String[] args) {
         double eps = 0.01;
         // if user gave us parameters, then first try use as epsilon
-        if (args.length > 0){
+        if (args.length > 0) {
             try {
                 eps = Double.parseDouble(args[0]);
-            }catch(Exception e){
+            } catch (Exception e) {
                 System.out.println("Enter epsilon:");
                 Scanner sc = new Scanner(System.in);
-                if (sc.hasNextDouble()){
+                if (sc.hasNextDouble()) {
                     eps = sc.nextDouble();
                 }
             }
-        }else{
+        } else {
             System.out.println("Enter epsilon:");
             Scanner sc = new Scanner(System.in);
-            if (sc.hasNextDouble()){
+            if (sc.hasNextDouble()) {
                 eps = sc.nextDouble();
             }
         }
-        if (eps < 0){
+        if (eps < 0) {
             return -eps;
-        } else if (eps == 0){
-            return  0.01;
+        } else if (eps == 0) {
+            return 0.01;
         }
 
         return eps;

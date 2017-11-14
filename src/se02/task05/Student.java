@@ -4,12 +4,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 public class Student {
-    
+
     @Getter
     @Setter
     private String name;
 
-    public Student(String name){
+    public Student(String name) {
         this.setName(name);
     }
     /* test

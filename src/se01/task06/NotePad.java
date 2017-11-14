@@ -6,6 +6,7 @@ package se01.task06;
  * 2. Добавление записи;
  * 3. Удаление записи;
  * 4. Печать списка записей;
+ *
  * @author olegik1719
  */
 public class NotePad {
@@ -17,21 +18,21 @@ public class NotePad {
      */
     private int capacity;
 
-    public NotePad(){
+    public NotePad() {
         this(10);
     }
 
-    private NotePad(int expected){
+    private NotePad(int expected) {
         notes = new Note[expected];
     }
 
-    public NotePad addNote(){
+    public NotePad addNote() {
         Note note = new Note();
         addNote(note);
         return this;
     }
 
-    public NotePad addNote(String body){
+    public NotePad addNote(String body) {
         Note note = new Note(body);
         addNote(note);
         return this;
@@ -39,13 +40,13 @@ public class NotePad {
 
     public NotePad addNote(Note note) {
         if (capacity >= notes.length)
-            setSize(2* capacity);
+            setSize(2 * capacity);
         notes[capacity++] = note.clone();
         //sizeOfList++;
         return this;
     }
 
-    private NotePad setSize(int newSize){
+    private NotePad setSize(int newSize) {
         Note[] newNotes = new Note[newSize];
         // заменить на arrayCopy!!!
         for (int i = 0, j = 0; i < capacity && j < newSize; i++, j++) {
@@ -77,43 +78,43 @@ public class NotePad {
         return this;
     }*/
 
-    public NotePad removeNote(int remIndex){
-        if (remIndex < capacity){
+    public NotePad removeNote(int remIndex) {
+        if (remIndex < capacity) {
             System.arraycopy(notes, remIndex,
-                    notes, remIndex+1,
-                    capacity - remIndex -1);
+                    notes, remIndex + 1,
+                    capacity - remIndex - 1);
             capacity--;
         }
         return this;
     }
 
-    public NotePad outToPrint(int noteToPrint){
+    public NotePad outToPrint(int noteToPrint) {
         if (noteToPrint < capacity)
             System.out.printf("Запись номер %d:\n %s \n",
-                noteToPrint, notes[noteToPrint]);
+                    noteToPrint, notes[noteToPrint]);
         return this;
     }
 
-    public NotePad outToPrint(){
+    public NotePad outToPrint() {
         for (int i = 0; i < capacity; i++)
             outToPrint(i);
         return this;
     }
 
-    public Note getNoteAt(int index){
+    public Note getNoteAt(int index) {
         return notes[index];
     }
 
-    public int getSizeOfList(){
+    public int getSizeOfList() {
         return capacity;
     }
 
-    public NotePad editNoteAt(int index, String newBody){
+    public NotePad editNoteAt(int index, String newBody) {
         notes[index].setNotebody(newBody);
         return this;
     }
 
-    public NotePad cleanNoteAt(int index){
+    public NotePad cleanNoteAt(int index) {
         notes[index].cleanNote();
         return this;
     }

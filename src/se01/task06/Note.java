@@ -2,13 +2,14 @@ package se01.task06;
 
 /**
  * Реализация класса <p>Записи</p>.
- * Методы:
- * 1. Создание;
- * 2. Изменение;
- * 3. Очистка;
- * 4. Получение;
- * Поля:
- * 1. Тело;
+ * Методы: <br>
+ * 1. Создание; <br>
+ * 2. изменение; <br>
+ * 3. Очистка; <br>
+ * 4. Получение; <br>
+ * Поля: <br>
+ * 1. Тело; <br>
+ *
  * @author olegik1719
  */
 public class Note {
@@ -17,30 +18,33 @@ public class Note {
     /**
      * Создание пустой записи
      */
-    public Note(){
+    public Note() {
         noteBody = "";
     }
 
     /**
      * Создание записи с заданным текстом
-     * @param body -- Текст новой записи
+     *
+     * @param body  Текст новой записи
      */
-    public Note(String body){
+    public Note(String body) {
         this();
         noteBody = body;
     }
 
     /**
      * Создание записи через копирование существующей
-     * @param original
+     *
+     * @param original данная запись
      */
-    public Note(Note original){
+    public Note(Note original) {
         this(original.noteBody);
     }
 
     /**
      * Возвращает текст записи.
-     * @return body
+     *
+     * @return текст записи
      */
     public String getNoteBody() {
         return noteBody;
@@ -49,33 +53,37 @@ public class Note {
     /**
      * Меняет текст записи.
      * Возвращает сам объект. Возможно серийное использование.
-     * @param newBody
-     * @return
+     *
+     * @param newBody новое тело
+     * @return запись с измененным телом
      */
-    public Note setNotebody(String newBody){
+    public Note setNotebody(String newBody) {
         noteBody = newBody;
         return this;
     }
 
     /**
      * Создает копию записи.
+     *
+     * @return  копию записи
      */
     @Override
-    public Note clone(){
+    public Note clone() {
         return new Note(this);
     }
 
     /**
      * Очищает запись. Возвращает сам объект.
-     * @return
+     *
+     * @return очищенную запись
      */
-    public Note cleanNote(){
+    public Note cleanNote() {
         return setNotebody("");
         //return this;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return getNoteBody();
     }
 
