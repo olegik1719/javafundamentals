@@ -4,11 +4,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 public class CrazyLogger {
     private StringBuilder crazyLog;
-    private SimpleDateFormat simpleDateFormat;// = new SimpleDateFormat("dd-mm-YYYY : hh:mm - ");
     private static String fmtDate= "dd-MM-yyyy : HH:mm - ";
     // MSG fmt dd-mm-YYYY : hh-mm -
     private static DateFormat dateFormat;// = new SimpleDateFormat(fmtDate);
