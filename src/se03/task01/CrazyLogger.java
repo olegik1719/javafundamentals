@@ -7,20 +7,28 @@ import java.util.Date;
 public class CrazyLogger {
     private StringBuilder crazyLog;
     //private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-mm-YYYY : hh:mm - ");
-    private static final String fmtDate= "dd-MM-yyyy : HH:mm - ";
+    private static String fmtDate= "dd-MM-yyyy : HH:mm - ";
     // MSG fmt dd-mm-YYYY : hh-mm -
-    private static final int DATE_LENGTH = 21;//Date -- 10, time -- 5, 4 spaces, 2 symbols
-    ArrayList<Integer> logEnds; //list of last byte every records
+    private static DateFormat df;// = new SimpleDateFormat(fmtDate);
+    private static int DATE_LENGTH;// = 21;//Date -- 10, time -- 5, 4 spaces, 2 symbols
+    private static ArrayList<Integer> logEnds; //list of last byte every records
+    
+    static{
+       df = new SimpleDateFormat(fmtDate);
+       DATE_LENGTH = fmtDate.length();
+    }
 
     public CrazyLogger() {
         crazyLog = new StringBuilder();
         logEnds = new ArrayList<Integer>();
+        //DATE_LENGTH = fmtDate.length();
     }
 
 
     public CrazyLogger addEvent(StringBuilder event) {
-        Date date = new Date(fmtDate);
-        System.out.println(date);
+        Date date = Calendar.getInstance().getTime();
+                
+        //System.out.println(date);
         // format date, add record
         // put end to logEnds
         return this;
