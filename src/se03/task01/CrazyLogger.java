@@ -43,6 +43,33 @@ public class CrazyLogger {
 
     public ArrayList<String> searchEvent(String subString) {
         ArrayList<String> result = new ArrayList<String>();
+		//System.out.printf("Size logEnds: %d\n",logEnds.size());
+		if (subString.equals("")){
+			// System.out.printf("substring is clean\n");
+			for (int i = 0; i<logEnds.size()-1;result.add(getEventByID(i++)));// System.out.printf("EventID = %d\n", i);
+		} else {
+			int eventID = 0;
+			int indexFound = crazyLog.indexOf(subString,DATE_LENGTH);
+			while ((indexFound > 0)&(eventID<logEnds.size()-1)){
+				// search event with this substring
+				//System.out.printf("subString:%s\nevID: %d\n",subString,eventID);
+				// System.out.printf("event:%s\n",getEventByID(eventID));
+				while(logEnds.get(eventID) < indexFound) eventID++;
+				// if (substring is for message) add event to list, 
+				// start search from next event
+				// System.out.printf("%s\n",getEventByID(eventID-1));
+				// System.out.printf("%d\n",getEventByID(eventID-1,false).indexOf(subString));
+				if (getEventByID(eventID-1,false).indexOf(subString) > -1){
+					result.add(getEventByID(eventID-1));
+				}
+				// System.out.printf("EventID:%d\n", eventID);
+				if (eventID<logEnds.size()) indexFound = crazyLog.indexOf(subString, logEnds.get(eventID));
+				// else search from next message
+				// 
+				// 
+			}
+		}
+		// old ideas:
 		// getEventByID(every),
 		//	String temp = getEventByID(id);
         // search subString,
@@ -51,7 +78,7 @@ public class CrazyLogger {
     }
 	
 	public CrazyLogger outEventByID(int id) {
-		return outEventByID(id, false);
+		return outEventByID(id, true);
     }
 	
 	public CrazyLogger outEventByID(int id, boolean withDate) {
@@ -60,28 +87,32 @@ public class CrazyLogger {
     }
 
 	public String getEventByID(int id) {
-		return getEventByID(id, false);
+		return getEventByID(id, true);
     }
 	
 	public String getEventByID(int id, boolean withDate) {
         String result = "";
+//		System.out.printf("EventIN = %d\n", id);
 		//Check input
-		if ((id>=0)&(id<logEnds.size())){
+		if ((id>=0)&(id<logEnds.size()-1)){
+			
 			if (withDate) result = crazyLog.substring(logEnds.get(id),logEnds.get(id+1));
 			else result = crazyLog.substring(logEnds.get(id)+DATE_LENGTH,logEnds.get(id+1));
+//			System.out.printf("exiit:%d\n",id);
 		}
         return result;
 	}
 
     public static void main(String[] args) {
         CrazyLogger cl = (new CrazyLogger()).addEvent("Hello world!")
-				.addEvent("")
-				.addEvent("1234567890")
-				.outEventByID(0,false)
-				.outEventByID(1,false)
-				.outEventByID(2,false)
-            ;
+				.addEvent("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+				.addEvent("He123456789!!!0")
+				// .outEventByID(0,false)
+				// .outEventByID(1,false)
+				// .outEventByID(2,false)
+				// .outEventByID(3,false)
+			;
 		//System.out.println(logEnds);
-		
+		System.out.println(cl.searchEvent("!"));
     }
 }
