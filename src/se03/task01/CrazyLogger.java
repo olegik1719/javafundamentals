@@ -20,41 +20,68 @@ public class CrazyLogger {
 
     public CrazyLogger() {
         crazyLog = new StringBuilder();
-        logEnds = new ArrayList<>();
+        logEnds = new ArrayList();
+		logEnds.add(0);
     }
 
 
     public CrazyLogger addEvent(String event) {
         crazyLog.append(dateFormat.format(Calendar.getInstance().getTime())).append(event);
+		// System.out.println(crazyLog.length());
         int currentEventLength = DATE_LENGTH + event.length();
-        logEnds.add(currentEventLength);
-        //System.out.printf("Log: %s\nCurrent Length: %d\n In _Ends_: %d",crazyLog.substring(0,logEnds.get(logEnds.size()-1)));
-        //logEnds.add()
-        //System.out.println(date);
+		int previousEnd = logEnds.get(logEnds.size()-1); 
+        logEnds.add(crazyLog.length());
+        // System.out.printf("Log: %s\n",crazyLog.substring(previousEnd,logEnds.get(logEnds.size()-1)));
+		// System.out.printf("Current Length: %d\n",currentEventLength);
+		// System.out.printf("In _Ends_: %d\n",logEnds.get(logEnds.size()-1));
+        // logEnds.add()
+        // System.out.println(date);
         // format date, add record
         // put end to logEnds
         return this;
     }
 
-    public ArrayList<StringBuilder> searchEvent(StringBuilder subString) {
-        ArrayList<StringBuilder> result = new ArrayList<StringBuilder>();
-        // getEventByID(every),
+    public ArrayList<String> searchEvent(String subString) {
+        ArrayList<String> result = new ArrayList<String>();
+		// getEventByID(every),
+		//	String temp = getEventByID(id);
         // search subString,
         // add to result
         return result;
     }
-
-    public String getEventByID(int id) {
-        String result = "";
-        int startPosition=0;
-        for (int i = 0; i < id-1; i++) {
-            startPosition+=logEnds.get(i);
-        }
-        result = crazyLog.substring(startPosition,logEnds.get(id-1));
-        return result;
+	
+	public CrazyLogger outEventByID(int id) {
+		return outEventByID(id, false);
+    }
+	
+	public CrazyLogger outEventByID(int id, boolean withDate) {
+		System.out.println(getEventByID(id, withDate));
+		return this;
     }
 
+	public String getEventByID(int id) {
+		return getEventByID(id, false);
+    }
+	
+	public String getEventByID(int id, boolean withDate) {
+        String result = "";
+		//Check input
+		if ((id>=0)&(id<logEnds.size())){
+			if (withDate) result = crazyLog.substring(logEnds.get(id),logEnds.get(id+1));
+			else result = crazyLog.substring(logEnds.get(id)+DATE_LENGTH,logEnds.get(id+1));
+		}
+        return result;
+	}
+
     public static void main(String[] args) {
-        (new CrazyLogger()).addEvent("Hello world!");
+        CrazyLogger cl = (new CrazyLogger()).addEvent("Hello world!")
+				.addEvent("")
+				.addEvent("1234567890")
+				.outEventByID(0,false)
+				.outEventByID(1,false)
+				.outEventByID(2,false)
+            ;
+		//System.out.println(logEnds);
+		
     }
 }
