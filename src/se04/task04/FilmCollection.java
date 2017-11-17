@@ -1,3 +1,4 @@
+package se04.task04;
 /* Дана коллекция фильмов, содержащая информацию об актерах,
     снимавшихся в главных ролях (один актер мог сниматься и в нескольких фильмах).
     Необходимо написать приложение, позволяющее при запуске восстанавливать
@@ -5,7 +6,7 @@
     приложения – сохранять (в файл). Для восстановления/сохранения коллекции
     использовать  сериализацию/десериализацию.
 */
-package se04.task04;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -52,7 +53,7 @@ public class FilmCollection implements Serializable{
             }
         }
 
-        System.out.printf ("Our collection on START program:\n%s\nIt's all.\n",fc);
+        System.out.printf ("Our collection on START program:\n%s\nIt's all.\n\n",fc);
         //  else
         //      fc = new FilmCollection();
         String[] actors =  {"actor1", "actor2"};
@@ -63,7 +64,9 @@ public class FilmCollection implements Serializable{
         film = new Film("title");
         fc.addFilm(film);
 
-        System.out.printf ("Our collection on END program:\n%s\nIt's all.",fc);
+        System.out.printf ("Our collection on END program:\n%s\nIt's all.\n\n",fc);
+
+        System.out.printf(Actor.getActorsList());
         try (FileOutputStream fos = new FileOutputStream(PATH_STRING);
                 ObjectOutputStream oos = new ObjectOutputStream(fos)){
             oos.writeObject(fc);
