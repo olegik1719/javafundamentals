@@ -5,7 +5,7 @@
     приложения – сохранять (в файл). Для восстановления/сохранения коллекции
     использовать  сериализацию/десериализацию.
 */
-
+package se04.task04;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
