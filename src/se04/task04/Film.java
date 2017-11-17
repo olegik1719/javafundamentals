@@ -1,3 +1,4 @@
+package se04.task04;
 import java.io.Serializable;
 import java.util.ArrayList;
 
