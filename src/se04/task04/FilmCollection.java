@@ -40,17 +40,30 @@ public class FilmCollection implements Serializable{
 
 
 
-    public static void main(String[] args) throws IOException,
-                ClassNotFoundException {
+    public static void main(String[] args) {
         FilmCollection fc = new FilmCollection();
         File file = new File(PATH_STRING);
-        if (file.exists()){
-            System.out.printf("File exists!\n");
-             //if (Check file exists)
-            try(FileInputStream fis = new FileInputStream(PATH_STRING);
-                ObjectInputStream ois = new ObjectInputStream(fis)){
-                    fc  = (FilmCollection) ois.readObject();
-            }
+        try{
+            FileInputStream fis = new FileInputStream(PATH_STRING);
+                try{
+                    ObjectInputStream ois = new ObjectInputStream(fis);
+                        try{
+                            fc  = (FilmCollection) ois.readObject();
+                        } catch (Exception e){
+                            System.out.printf("\n!!! There aren't objects, or they are corrupted!!!\n");
+                            fc = new FilmCollection();
+                        } finally {
+                            ois.close();
+                        }
+                }catch (Exception e){
+                    System.out.printf("\n!!! Problem in ObjectInputStream!!!\n");
+                    fc = new FilmCollection();
+                } finally {
+                    fis.close();
+                }
+        }catch (Exception e){
+            System.out.printf("\n!!! Problem with file!!!\n");
+            fc = new FilmCollection();
         }
 
         System.out.printf ("Our collection on START program:\n%s\nIt's all.\n\n",fc);
@@ -67,9 +80,29 @@ public class FilmCollection implements Serializable{
         System.out.printf ("Our collection on END program:\n%s\nIt's all.\n\n",fc);
 
         System.out.printf(Actor.getActorsList());
-        try (FileOutputStream fos = new FileOutputStream(PATH_STRING);
-                ObjectOutputStream oos = new ObjectOutputStream(fos)){
-            oos.writeObject(fc);
+        // try (FileOutputStream fos = new FileOutputStream(PATH_STRING);
+        //         ObjectOutputStream oos = new ObjectOutputStream(fos)){
+        //     oos.writeObject(fc);
+        // }
+        try{
+            FileOutputStream fos = new FileOutputStream(PATH_STRING);
+                try{
+                    ObjectOutputStream oos = new ObjectOutputStream(fos);
+                        try{
+                            oos.writeObject(fc);
+                        } catch (Exception e){
+                            // Не получилось записать
+                            System.out.printf("\n!!! Не удалось сохранить!!!\n");
+                        } finally {
+                            oos.close();
+                        }
+                }catch (Exception e){
+                    System.out.printf("\n!!! Не удалось сохранить!!!\n");
+                } finally {
+                    fos.close();
+                }
+        }catch (Exception e){
+            System.out.printf("\n!!! Не удалось сохранить!!!\n");
         }
     }
 
