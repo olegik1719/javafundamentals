@@ -3,6 +3,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Film implements Serializable{
+	private static final long serialVersionUID = 1L;
+    
 	private String title;
 	private ArrayList<Actor> actors;
 
@@ -32,6 +34,4 @@ public class Film implements Serializable{
 		}
 		return result;
 	}
-
-
 }
