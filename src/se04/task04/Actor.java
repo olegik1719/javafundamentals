@@ -3,6 +3,8 @@ import java.util.TreeMap;
 import java.io.Serializable;
 
 public class Actor implements Serializable{
+    private static final long serialVersionUID = 1L;
+
 	private String name;
     static private TreeMap<String, Actor> actors;
     static{
@@ -56,4 +58,18 @@ public class Actor implements Serializable{
         return result;
     }
 
+    public static String getActorsList(){
+        String result = "List of actors";
+        if (actors.size() == 0){
+            result += " is empty\n";
+        } else {
+            result += ":\n";
+            for(Actor actor:actors.values()){
+                result+=actor.name+'\n';
+            }
+        }
+        return result;
+    }
+
 }
+
