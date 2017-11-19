@@ -98,7 +98,7 @@ public class CrazyLogger {
 			
 			if (withDate) result = crazyLog.substring(logEnds.get(id),logEnds.get(id+1));
 			else result = crazyLog.substring(logEnds.get(id)+DATE_LENGTH,logEnds.get(id+1));
-//			System.out.printf("exiit:%d\n",id);
+//			System.out.printf("exit:%d\n",id);
 		}
         return result;
 	}
