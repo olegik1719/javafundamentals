@@ -7,25 +7,18 @@ package se04.task04;
     использовать  сериализацию/десериализацию.
 */
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class FilmCollection implements Serializable{
     private static final long serialVersionUID = 1L;
     private static final String PATH_STRING = "serial.dat";
 
-    ArrayList<Film> filmCollection;
-    public FilmCollection(){
-        filmCollection = new ArrayList();
+    private ArrayList<Film> filmCollection = new ArrayList<>();
+    private FilmCollection(){
     }
 
-    public FilmCollection addFilm(Film film){
+    private FilmCollection addFilm(Film film){
         filmCollection.add(film);
         return this;
     }
@@ -41,8 +34,7 @@ public class FilmCollection implements Serializable{
 
 
     public static void main(String[] args) {
-        FilmCollection fc = new FilmCollection();
-        File file = new File(PATH_STRING);
+        FilmCollection fc;
         try{
             FileInputStream fis = new FileInputStream(PATH_STRING);
                 try{
@@ -50,7 +42,7 @@ public class FilmCollection implements Serializable{
                         try{
                             fc  = (FilmCollection) ois.readObject();
                         } catch (Exception e){
-                            System.out.printf("\n!!! There aren't objects, or they are corrupted!!!\n");
+                            System.out.printf("\n!!! There aren't objects in file, or they are corrupted!!!\n");
                             fc = new FilmCollection();
                         } finally {
                             ois.close();
@@ -72,18 +64,16 @@ public class FilmCollection implements Serializable{
         String[] actors =  {"actor1", "actor2"};
         Film film = new Film("New FILM", actors);
         //film.setName("Other name");
-        fc.addFilm(film);
+        Film film1 = new Film("title");
 
-        film = new Film("title");
-        fc.addFilm(film);
+        fc.addFilm(film)
+                .addFilm(film1)
+            ;
 
         System.out.printf ("Our collection on END program:\n%s\nIt's all.\n\n",fc);
 
         System.out.printf(Actor.getActorsList());
-        // try (FileOutputStream fos = new FileOutputStream(PATH_STRING);
-        //         ObjectOutputStream oos = new ObjectOutputStream(fos)){
-        //     oos.writeObject(fc);
-        // }
+
         try{
             FileOutputStream fos = new FileOutputStream(PATH_STRING);
                 try{
